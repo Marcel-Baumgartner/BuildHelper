@@ -1,0 +1,32 @@
+{
+  "Id": "buildHelper",
+  "Repository": "https://github.com/Marcel-Baumgartner/BuildHelper",
+  "Branch": "main",
+  "Packages": [
+    "dotnet-sdk-7.0"
+  ],
+  "Artifacts": [
+    {
+      "Name": "BuildHelper_x64",
+      "Path": "BuildHelper/bin/Release/net7.0/linux-x64/publish/BuildHelper"
+    },
+    {
+      "Name": "BuildHelper_arm64",
+      "Path": "BuildHelper/bin/Release/net7.0/linux-arm64/publish/BuildHelper"
+    }
+  ],
+  "Steps": [
+    {
+      "Name": "Compile for x64",
+      "Commands": [
+        "dotnet publish -c Release -r linux-x64 --self-contained true /p:PublishSingleFile=true"
+      ]
+    },
+    {
+      "Name": "Compile for arm64",
+      "Commands": [
+        "dotnet publish -c Release -r linux-arm64 --self-contained true /p:PublishSingleFile=true"
+      ]
+    }
+  ]
+}
